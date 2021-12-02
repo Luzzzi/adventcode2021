@@ -7,14 +7,12 @@ horizontal_position = 0
 depth = 0
 for i in range(0, len(lines)):
     command = lines[i].split()
-    print(command)
-    for i in range (len(command)-1):
-        if command[i] == "forward":
-            horizontal_position += int(command[i +1])
-        if command[i] == "down":
-            depth += int(command[i+1])
-        if command[i] == "up":
-            depth -= int(command[i+1])
+    if command[0] == "forward":
+        horizontal_position += int(command[1])
+    if command[0] == "down":
+        depth += int(command[1])
+    if command[0] == "up":
+        depth -= int(command[1])
 
 final_position = depth * horizontal_position
 print(final_position)
