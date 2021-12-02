@@ -1,4 +1,4 @@
-with open("input2.txt", "r") as fd:
+with open("input.txt", "r") as fd:
     lines = fd.readlines()
     lines = [line.rstrip() for line in lines]
 
@@ -8,19 +8,13 @@ depth = 0
 aim = 0
 for i in range(0, len(lines)):
     command = lines[i].split()
-    print(command)
-    for i in range (len(command)-1):
-        if command[i] == "forward":
-            horizontal_position += int(command[i +1])
-            depth = depth * aim
-        if command[i] == "down":
-            depth += int(command[i+1])
-            aim += int(command[i]+1)
-        if command[i] == "up":
-            depth -= int(command[i+1])
-            aim -= int(command)
+    if command[0] == "forward":
+        horizontal_position += int(command[1])
+        depth += aim * int(command[1])
+    if command[0] == "down":
+        aim += int(command[1])
+    if command[0] == "up":
+        aim -= int(command[1])
 
-print(depth)
-print(horizontal_position)
 final_position = depth * horizontal_position
 print(final_position)
